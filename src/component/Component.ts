@@ -1,4 +1,4 @@
-export default class Component<T extends HTMLElement> {
+export default abstract class Component<T extends Element> {
     protected constructor(
         public readonly element: T,
     ) {
@@ -37,22 +37,12 @@ export default class Component<T extends HTMLElement> {
         return this;
     }
 
-    public on<K extends keyof HTMLElementEventMap>(type: K, listener: (ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): this {
+    public on<K extends keyof ElementEventMap>(type: K, listener: (ev: ElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): this {
         this.element.addEventListener(type, listener, options);
         return this;
     }
 
     public toString(): string {
         return this.element.outerHTML;
-    }
-
-    public static tag<K extends keyof HTMLElementTagNameMap>(name: K): Component<HTMLElementTagNameMap[K]> {
-        return new Component(document.createElement(name));
-    }
-
-    public static from<T extends HTMLElement = HTMLElement>(html: string): Component<T> {
-        const element = document.createElement("div");
-        element.innerHTML = html;
-        return new Component(element.firstElementChild as T);
     }
 }

@@ -1,7 +1,7 @@
-import Component from "../Component.ts";
 import PageManager from "../../PageManager.ts";
+import HTMLComponent from "../HTMLComponent.ts";
 
-export default abstract class Page extends Component<HTMLElement> {
+export default abstract class Page extends HTMLComponent<HTMLElement> {
     protected opened = false;
 
     protected constructor() {

@@ -1,6 +1,6 @@
-import Component from "./Component.ts";
+import HTMLComponent from "./HTMLComponent.ts";
 
-export default class Input extends Component<HTMLInputElement> {
+export default class Input extends HTMLComponent<HTMLInputElement> {
     public constructor(type: string, id?: string, required: boolean = false) {
         super(document.createElement("input"));
         this.attr("type", type);
