@@ -60,8 +60,8 @@ namespace Button {
     }
 
     export enum Style {
-        PRIMARY = "font-semibold bg-green-500 text-white shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500 disabled:bg-zinc-800 disabled:text-zinc-500 disabled:hover:bg-zinc-800 disabled:cursor-not-allowed",
-        OUTLINE = "text-zinc-50 ring-1 ring-inset ring-zinc-50/10 shadow-sm hover:bg-zinc-50/10 hover:ring-2 disabled:text-zinc-500 disabled:hover:bg-transparent disabled:hover:ring-1",
+        PRIMARY = "font-semibold bg-green-500 text-white shadow-sm transition-colors hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500 disabled:bg-zinc-800 disabled:text-zinc-500 disabled:hover:bg-zinc-800 disabled:cursor-not-allowed",
+        OUTLINE = "text-zinc-50 ring-1 ring-inset ring-zinc-50/10 shadow-sm transition-colors hover:bg-zinc-50/10 hover:ring-2 disabled:text-zinc-500 disabled:hover:bg-transparent disabled:hover:ring-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-green-500",
     }
 }
 
