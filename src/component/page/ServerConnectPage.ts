@@ -6,8 +6,8 @@ import URLComponent from "../URLComponent.ts";
 import Server from "../../Server.ts";
 import PreludeSettings from "../../PreludeSettings.ts";
 import Icon from "../Icon.ts";
-import music2Icon from "../../assets/icons/lucide/music-2.svg?raw";
-import circleAlertIcon from "../../assets/icons/lucide/circle-alert.svg?raw";
+import music2Icon from "../../icons/lucide/music-2.svg?raw";
+import circleAlertIcon from "../../icons/lucide/circle-alert.svg?raw";
 
 export default class ServerConnectPage extends Page {
     private readonly discoveredServersComponent = Component.tag("div");
