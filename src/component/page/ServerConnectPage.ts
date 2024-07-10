@@ -5,6 +5,9 @@ import Input from "../Input.ts";
 import URLComponent from "../URLComponent.ts";
 import Server from "../../Server.ts";
 import PreludeSettings from "../../PreludeSettings.ts";
+import Icon from "../Icon.ts";
+import music2Icon from "../../assets/icons/lucide/music-2.svg?raw";
+import circleAlertIcon from "../../assets/icons/lucide/circle-alert.svg?raw";
 
 export default class ServerConnectPage extends Page {
     private readonly discoveredServersComponent = Component.tag("div");
@@ -22,7 +25,7 @@ export default class ServerConnectPage extends Page {
             .class("min-h-screen", "hidden", "flex-col", "justify-center", "px-6", "py-12", "lg:px-8", "sm:mx-auto", "sm:w-full", "sm:max-w-sm")
             .append(Component
                 .from(`<div class="mb-10 space-y-10">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto w-10 h-10 text-green-500" aria-hidden="true"><circle cx="8" cy="18" r="4"/><path d="M12 18V2l7 4"/></svg>
+                  ${Icon.from(music2Icon).size(10).class("mx-auto", "text-green-500")}
                   <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-zinc-50">Connect to a server</h2>
                 </div>`)
             );
@@ -114,7 +117,7 @@ export default class ServerConnectPage extends Page {
                     .append(
                         new Button(Button.Size.BASE, Button.Style.OUTLINE)
                             .type("button")
-                            .append(Component.from(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-zinc-400 group-disabled:text-zinc-500" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>`))
+                            .append(Icon.from(circleAlertIcon).size(4).class("text-zinc-400", "group-disabled:text-zinc-500"))
                             .append(new URLComponent(new URL(server.url)))
                             .class("text-left", "flex", "gap-x-2", "items-center", "group")
                             .on("click", () => {
