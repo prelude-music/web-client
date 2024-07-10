@@ -4,7 +4,7 @@ export default abstract class ElementComponent<T extends Element> {
     ) {
     }
 
-    public append<T extends HTMLElement>(child: ElementComponent<T>): this {
+    public append<T extends Element>(child: ElementComponent<T>): this {
         this.element.appendChild(child.element);
         return this;
     }
