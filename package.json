@@ -19,6 +19,6 @@
     "vite": "^5.3.2"
   },
   "dependencies": {
-    "enhanced-switch": "^1.1.6"
+    "enhanced-switch": "^1.1.7"
   }
 }
