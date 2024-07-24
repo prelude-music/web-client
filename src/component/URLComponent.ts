@@ -1,11 +1,11 @@
 import Component from "./Component.ts";
 
 export default class URLComponent extends Component<HTMLSpanElement> {
-    public readonly protocol: Component<HTMLSpanElement> = Component.tag("span").class("text-zinc-400 group-disabled:text-zinc-500");
-    public readonly hostname: Component<HTMLSpanElement> = Component.tag("span").class("text-zinc-50 group-disabled:text-zinc-500");
-    public readonly port: Component<HTMLSpanElement> = Component.tag("span").class("text-zinc-400 group-disabled:text-zinc-500");
-    public readonly pathname: Component<HTMLSpanElement> = Component.tag("span").class("text-zinc-400 group-disabled:text-zinc-500");
-    public readonly query: Component<HTMLSpanElement> = Component.tag("span").class("text-zinc-400 group-disabled:text-zinc-500");
+    public readonly protocol: Component<HTMLSpanElement> = Component.span().class("text-zinc-400 group-disabled:text-zinc-500");
+    public readonly hostname: Component<HTMLSpanElement> = Component.span().class("text-zinc-50 group-disabled:text-zinc-500");
+    public readonly port: Component<HTMLSpanElement> = Component.span().class("text-zinc-400 group-disabled:text-zinc-500");
+    public readonly pathname: Component<HTMLSpanElement> = Component.span().class("text-zinc-400 group-disabled:text-zinc-500");
+    public readonly query: Component<HTMLSpanElement> = Component.span().class("text-zinc-400 group-disabled:text-zinc-500");
 
     #url: URL;
 

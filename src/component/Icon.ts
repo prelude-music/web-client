@@ -5,12 +5,11 @@ export default class Icon extends ElementComponent<SVGSVGElement> {
         super(element ?? document.createElementNS("http://www.w3.org/2000/svg", "svg"));
     }
 
-    public size(size: 4 | 10): this {
+    public size(size: 4 | 5 | 10): this {
         switch (size) {
-            case 4:
-                return this.class("w-4", "h-4");
-            case 10:
-                return this.class("w-10", "h-10");
+            case 4: return this.class("w-4", "h-4");
+            case 5: return this.class("w-5", "h-5");
+            case 10: return this.class("w-10", "h-10");
         }
     }
 

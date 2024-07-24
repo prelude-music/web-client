@@ -39,7 +39,7 @@ class Button extends Component<HTMLButtonElement> {
                         this.#preLoadingContent.push(child);
                         child.remove();
                     }
-                    this.append(Component.from(`<div class="flex w-full items-center gap-x-3"><div class="w-5 h-5 aspect-square border-2 border-zinc-700 border-t-zinc-50 rounded-full animate-spin"></div>${Component.tag("span").text(text).class("flex-1")}</div>`));
+                    this.append(Component.from(`<div class="flex w-full items-center gap-x-3"><div class="w-5 h-5 aspect-square border-2 border-zinc-700 border-t-zinc-50 rounded-full animate-spin"></div>${Component.span(text).class("flex-1")}</div>`));
                 }
             }
             else if (this.#preLoadingContent.length !== 0) {

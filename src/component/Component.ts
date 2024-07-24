@@ -10,6 +10,10 @@ export default class Component<T extends HTMLElement> extends ElementComponent<T
         return new Component(document.createElement(name));
     }
 
+    public static span(text?: string): Component<HTMLSpanElement> {
+        return Component.tag("span").text(text ?? "");
+    }
+
     public static from<T extends HTMLElement = HTMLElement>(html: string): Component<T> {
         const element = document.createElement("div");
         element.innerHTML = html;
