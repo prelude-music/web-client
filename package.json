@@ -20,6 +20,6 @@
   },
   "dependencies": {
     "enhanced-switch": "^1.1.7",
-    "@prelude-music/ts-sdk": "github:prelude-music/ts-sdk#dev/zefir",
+    "@prelude-music/ts-sdk": "github:prelude-music/ts-sdk#dev/zefir"
   }
 }
