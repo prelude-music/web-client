@@ -14,12 +14,12 @@
   "devDependencies": {
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
-    "tailwindcss": "^3.4.4",
-    "typescript": "^5.5.2",
-    "vite": "^5.3.2"
+    "tailwindcss": "^3.4.6",
+    "typescript": "^5.5.4",
+    "vite": "^5.3.4"
   },
   "dependencies": {
+    "enhanced-switch": "^1.1.7",
     "@prelude-music/ts-sdk": "github:prelude-music/ts-sdk#dev/zefir",
-    "enhanced-switch": "^1.1.6"
   }
 }
