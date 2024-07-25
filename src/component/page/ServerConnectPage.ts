@@ -86,7 +86,7 @@ export default class ServerConnectPage extends Page {
                     const server = await Server.resolve(new URL(this.input.element.value), AbortSignal.timeout(5000));
                     if (server === null) throw new Error("Could not connect to server");
                     const serverInfo = await server.prelude.info();
-                    if (serverInfo === null) throw new Error("Could not get server info");
+                    if (!serverInfo.version.isCompatible(server.prelude)) throw new Error(`This server's version (${serverInfo.version.toString()}) is not compatible with this client (${server.prelude.version.toString()})`);
                     enable();
                     this.settings.server = server;
                     this.settings.save();
