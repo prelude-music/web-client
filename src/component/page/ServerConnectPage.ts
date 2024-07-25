@@ -85,6 +85,8 @@ export default class ServerConnectPage extends Page {
                     if (this.input.element.value === "") throw new Error("Server address cannot be empty");
                     const server = await Server.resolve(new URL(this.input.element.value), AbortSignal.timeout(5000));
                     if (server === null) throw new Error("Could not connect to server");
+                    const serverInfo = await server.prelude.info();
+                    if (serverInfo === null) throw new Error("Could not get server info");
                     enable();
                     this.settings.server = server;
                     this.settings.save();

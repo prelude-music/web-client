@@ -1,7 +1,11 @@
+import {Prelude} from "@prelude-music/ts-sdk";
+
 /**
  * A Prelude backend server pointer
  */
 export default class Server {
+    public readonly prelude: Prelude;
+
     /**
      * Create new server
      * @param url The server URL. The server may not be listening on this address if federation is set up on this URL.
@@ -17,47 +21,7 @@ export default class Server {
          */
         public readonly federatedURL: URL = url
     ) {
-    }
-
-    /**
-     * Get API information about this server
-     */
-    public async info(): Promise<{ version: string }> {
-        return "" as any;
-    }
-
-    private concatURLPath(url: URL, path: string): URL {
-        const newURL = new URL(url);
-        newURL.pathname += path.startsWith("/") && url.pathname.endsWith("/") ? path.slice(1) : path;
-        return newURL;
-    }
-
-    /**
-     * Fetch JSON from provided API endpoint
-     * @param path Endpoint path
-     * @param [query] Query parameters
-     * @param [method] HTTP method
-     * @param [headers] Request headers
-     * @param [body] Request body
-     */
-    public async fetch(path: string, query: Record<string, string | undefined | null> = {}, method: string = "GET", headers: Record<string, string> = {}, body: Record<string, string> = {}) {
-        if ("limit" in query && query.limit === "Infinity") {
-            query.limit = "0";
-            const data = await this.fetch(path, query, method, headers, body);
-            query.limit = String(data.json.total);
-        }
-        const url = this.concatURLPath(this.federatedURL, path);
-        url.search = new URLSearchParams(Object.fromEntries(Object.entries(query).filter(([, v]) => v !== null && v !== undefined)) as Record<string, string>).toString();
-        const options: RequestInit = {
-            method,
-            headers
-        };
-        if (!["GET", "HEAD"].includes(method)) {
-            options.body = JSON.stringify(body);
-        }
-        const res = await fetch(url, options);
-        const json = await res.json();
-        return {res, json};
+        this.prelude = new Prelude(federatedURL);
     }
 
     /**
@@ -94,7 +58,7 @@ export default class Server {
             const res = await fetch(newURL, {signal: abortController.signal});
             if (res.ok) {
                 const json = await res.json();
-                if ("version" in json && typeof json.version === "string") {
+                if ("prelude" in json && typeof json.prelude === "object" && "version" in json.prelude && typeof json.prelude.version === "string") {
                     newURL.pathname = "/";
                     return new Server(newURL);
                 }
