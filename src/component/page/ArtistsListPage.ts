@@ -24,11 +24,11 @@ class ArtistsListPage extends Page {
                         .append(
                             Component.tag("h1")
                                 .text("Artists")
-                                .class("text-3xl", "font-bold", "text-zinc-50")
+                                .class("text-4xl", "font-bold", "text-zinc-50", "tracking-tight")
                         )
                         .append(
                             Component.tag("p")
-                                .class("text-base", "text-zinc-400", "mt-4")
+                                .class("text-lg", "text-zinc-400", "mt-4")
                         ))
                     .append(this.grid)
             );
