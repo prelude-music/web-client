@@ -9,6 +9,7 @@ import music2Icon from "../icons/lucide/music-2.svg?raw";
 import usersRoundIcon from "../icons/lucide/users-round.svg?raw";
 import menuIcon from "../icons/lucide/menu.svg?raw";
 import xIcon from "../icons/lucide/x.svg?raw";
+import searchIcon from "../icons/lucide/search.svg?raw";
 import IconInput from "./IconInput.ts";
 import UserButton from "./UserButton.ts";
 import IconButton from "./IconButton.ts";
@@ -17,7 +18,7 @@ export default class Sidebar extends Component<HTMLDivElement> {
     private readonly search = new IconInput(
         new Input("textarea", "search")
             .attr("placeholder", "Search tracks, playlists, artists, albums"),
-        Icon.from(music2Icon)
+        Icon.from(searchIcon)
     );
     private readonly topbar = Component.tag("div");
     private readonly overlay = Component.tag("div");
