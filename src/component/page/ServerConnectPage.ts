@@ -106,7 +106,7 @@ export default class ServerConnectPage extends Page {
 
     protected override open() {
         this.replaceClass("hidden", "flex");
-        Promise.all(["prelude.local", "127.0.0.1", "[::1]"].map(async hostname => await Server.discover(hostname, this.serverDiscoveryAbort.signal, 300))).then(s => {
+        Promise.all(["prelude.local", "localhost"].map(async hostname => await Server.discover(hostname, this.serverDiscoveryAbort.signal, 300))).then(s => {
             const servers: Server[] = s.flat();
             if (servers.length === 0) return;
             this.discoveredServersComponent
