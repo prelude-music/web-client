@@ -9,7 +9,7 @@ export default class Input extends Component<HTMLInputElement> {
             this.attr("name", id);
         }
         if (required) this.attr("required", "");
-        this.class("block", "w-full", "rounded-lg", "bg-zinc-50/5", "px-3", "py-1.5", "text-zinc-50", "shadow-sm", "ring-1", "ring-inset", "ring-zinc-50/10", "placeholder:text-zinc-500", "focus:outline", "focus:outline-2", "focus:outline-green-500", "sm:text-sm sm:leading-6", "disabled:opacity-50", "disabled:cursor-not-allowed", "invalid:focus:outline-red-500", "invalid:text-red-400");
+        this.class("block", "w-full", "rounded-lg", "bg-zinc-50/5", "px-3", "py-1.5", "text-zinc-50", "shadow-sm", "ring-1", "ring-inset", "ring-zinc-50/10", "placeholder:text-zinc-500", "placeholder-shown:placeholder:text-ellipsis", "focus:outline", "focus:outline-2", "focus:outline-green-500", "sm:text-sm sm:leading-6", "disabled:opacity-50", "disabled:cursor-not-allowed", "invalid:focus:outline-red-500", "invalid:text-red-400");
     }
 
     public disabled(disabled: boolean = true): this {

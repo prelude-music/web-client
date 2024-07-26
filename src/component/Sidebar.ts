@@ -16,7 +16,7 @@ import IconButton from "./IconButton.ts";
 export default class Sidebar extends Component<HTMLDivElement> {
     private readonly search = new IconInput(
         new Input("textarea", "search")
-            .attr("placeholder", "Search tracks, playlists, ..."),
+            .attr("placeholder", "Search tracks, playlists, artists, albums"),
         Icon.from(music2Icon)
     );
     private readonly topbar = Component.tag("div");
