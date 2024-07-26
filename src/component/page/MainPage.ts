@@ -13,7 +13,7 @@ export default class MainPage extends Page {
             .append(
                 Component
                     .tag("div")
-                    .class("flex-1", "h-full")
+                    .class("flex-1")
                     .text("main")
             );
     }

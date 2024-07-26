@@ -1,4 +1,3 @@
-
 import {Artist} from "@prelude-music/ts-sdk";
 import Page from "./Page.ts";
 import PreludeSettings from "../../PreludeSettings.ts";
@@ -11,6 +10,7 @@ class ArtistsListPage extends Page {
     public override urlMatch = /^\/artists\/?$/;
     private readonly grid = Component.tag("div")
         .class("grid", "grid-cols-2", "sm:grid-cols-4", "lg:grid-cols-4", "xl:grid-cols-6", "gap-12", "mt-4")
+
     public constructor(protected readonly settings: PreludeSettings, private readonly sidebar: Sidebar) {
         super();
         this
@@ -18,7 +18,7 @@ class ArtistsListPage extends Page {
             .append(
                 Component
                     .tag("div")
-                    .class("flex-1", "h-full", "pb-16", "px-4", "md:px-6")
+                    .class("flex-1", "pb-16", "px-4", "md:px-6")
                     .append(Component.tag("div")
                         .class("py-6", "lg:py-12")
                         .append(
@@ -32,12 +32,6 @@ class ArtistsListPage extends Page {
                         ))
                     .append(this.grid)
             );
-    }
-
-    private renderArtists(artists: Artist[]) {
-        for (const artist of artists) {
-            this.grid.append(new ArtistsListPage.ArtistListItem(artist));
-        }
     }
 
     protected override open() {
@@ -57,6 +51,11 @@ class ArtistsListPage extends Page {
     protected override close() {
         this.grid.empty();
         this.replaceClass(["block", "lg:flex"], "hidden");
+    }
+
+    private renderArtists(artists: Artist[]) {
+        for (const artist of artists)
+            this.grid.append(new ArtistsListPage.ArtistListItem(artist));
     }
 }
 
