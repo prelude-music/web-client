@@ -3,6 +3,7 @@ import ServerConnectPage from "./component/page/ServerConnectPage.ts";
 import MainPage from "./component/page/MainPage.ts";
 import PreludeSettings from "./PreludeSettings.ts";
 import Sidebar from "./component/Sidebar.ts";
+import ArtistsListPage from "./component/page/ArtistsListPage.ts";
 
 class PageManager {
     public constructor(private readonly settings: PreludeSettings) {

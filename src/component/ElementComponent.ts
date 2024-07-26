@@ -9,6 +9,11 @@ export default abstract class ElementComponent<T extends Element> {
         return this;
     }
 
+    public prepend<T extends Element>(child: ElementComponent<T>): this {
+        this.element.prepend(child.element);
+        return this;
+    }
+
     public class(...classes: string[]): this {
         this.element.classList.add(...classes.flatMap(c => c.split(" ")));
         return this;
@@ -27,6 +32,12 @@ export default abstract class ElementComponent<T extends Element> {
         return this;
     }
 
+    public toggleClass(...classes: string[]): this {
+        for (const c of classes)
+            this.element.classList.toggle(c);
+        return this;
+    }
+
     public attr(name: string, value: any): this {
         this.element.setAttribute(name, String(value));
         return this;
@@ -37,8 +48,19 @@ export default abstract class ElementComponent<T extends Element> {
         return this;
     }
 
-    public on<K extends keyof ElementEventMap>(type: K, listener: (ev: ElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): this {
-        this.element.addEventListener(type, listener, options);
+    public empty(): this {
+        while (this.element.firstChild)
+            this.element.removeChild(this.element.firstChild);
+        return this;
+    }
+
+    public replace<T extends Element>(child: ElementComponent<T>): this {
+        this.element.replaceWith(child.element);
+        return this;
+    }
+
+    public on<K extends keyof ElementEventMap>(type: K, listener: (ev: ElementEventMap[K], component: this) => any, options?: boolean | AddEventListenerOptions): this {
+        this.element.addEventListener(type, e => listener(e, this), options);
         return this;
     }
 
