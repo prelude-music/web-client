@@ -4,6 +4,7 @@ import MainPage from "./component/page/MainPage.ts";
 import PreludeSettings from "./PreludeSettings.ts";
 import Sidebar from "./component/Sidebar.ts";
 import ArtistsListPage from "./component/page/ArtistsListPage.ts";
+import NotFoundPage from "./component/page/NotFoundPage.ts";
 
 class PageManager {
     public constructor(private readonly settings: PreludeSettings) {
@@ -23,6 +24,7 @@ class PageManager {
         serverConnect: new ServerConnectPage(this.settings),
         main: new MainPage(this.settings, this.sidebar),
         artistsList: new ArtistsListPage(this.settings, this.sidebar),
+        404: new NotFoundPage(this.sidebar)
     } as const;
 
     private current: Page | null = null;
@@ -35,13 +37,14 @@ class PageManager {
 
     public url(url: URL) {
         history.pushState(null, "", url);
-        for (const [id, page] of Object.entries(this.pages)) {
+        for (const [id, page] of Object.entries(this.pages))
             if (page.urlMatch !== null && page.urlMatch.test(url.pathname)) {
                 console.log("open", id)
                 this.open(id as PageManager.PageNames);
                 return;
             }
-        }
+
+        this.open(404);
     }
 }
 
