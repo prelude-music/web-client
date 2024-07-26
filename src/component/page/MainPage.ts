@@ -4,11 +4,10 @@ import Sidebar from "../Sidebar.ts";
 import Component from "../Component.ts";
 
 export default class MainPage extends Page {
-    public constructor(protected readonly settings: PreludeSettings) {
+    public constructor(protected readonly settings: PreludeSettings, private readonly sidebar: Sidebar) {
         super();
         this
             .class("hidden", "min-h-screen")
-            .append(new Sidebar())
             .append(
                 Component
                     .tag("div")
@@ -18,7 +17,9 @@ export default class MainPage extends Page {
     }
 
     protected override open() {
-        this.replaceClass("hidden", "flex");
+        this
+            .replaceClass("hidden", "flex")
+            .prepend(this.sidebar);
     }
 
     protected override close() {

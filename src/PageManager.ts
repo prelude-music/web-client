@@ -2,6 +2,7 @@ import Page from "./component/page/Page.ts";
 import ServerConnectPage from "./component/page/ServerConnectPage.ts";
 import MainPage from "./component/page/MainPage.ts";
 import PreludeSettings from "./PreludeSettings.ts";
+import Sidebar from "./component/Sidebar.ts";
 
 class PageManager {
     public constructor(private readonly settings: PreludeSettings) {
@@ -11,9 +12,11 @@ class PageManager {
         });
     }
 
+    private readonly sidebar = new Sidebar();
+
     private readonly pages = {
         serverConnect: new ServerConnectPage(this.settings),
-        main: new MainPage(this.settings),
+        main: new MainPage(this.settings, this.sidebar),
     } as const;
 
     private current: Page | null = null;

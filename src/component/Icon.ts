@@ -1,10 +1,6 @@
-import ElementComponent from "./ElementComponent.ts";
+import SvgComponent from "./SvgComponent.ts";
 
-export default class Icon extends ElementComponent<SVGSVGElement> {
-    public constructor(element?: SVGSVGElement) {
-        super(element ?? document.createElementNS("http://www.w3.org/2000/svg", "svg"));
-    }
-
+export default class Icon extends SvgComponent {
     public size(size: 4 | 5 | 10): this {
         switch (size) {
             case 4: return this.class("w-4", "h-4");
@@ -13,9 +9,7 @@ export default class Icon extends ElementComponent<SVGSVGElement> {
         }
     }
 
-    public static from(svg: string): Icon {
-        const element = document.createElement("div");
-        element.innerHTML = svg;
-        return new Icon(element.firstElementChild as SVGSVGElement);
+    public static override from(svg: string): Icon {
+        return new this(SvgComponent.svgFromString(svg));
     }
 }
