@@ -90,7 +90,7 @@ export default class ServerConnectPage extends Page {
                     enable();
                     this.settings.server = server;
                     this.settings.save();
-                    Page.request("main");
+                    Page.requestUrl(new URL(document.URL));
                 }
                 catch (e) {
                     console.error(e);

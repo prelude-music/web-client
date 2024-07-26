@@ -4,6 +4,8 @@ import Sidebar from "../Sidebar.ts";
 import Component from "../Component.ts";
 
 export default class MainPage extends Page {
+    public override urlMatch = /^\/$/;
+
     public constructor(protected readonly settings: PreludeSettings, private readonly sidebar: Sidebar) {
         super();
         this

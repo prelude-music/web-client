@@ -2,6 +2,7 @@ import PageManager from "../../PageManager.ts";
 import Component from "../Component.ts";
 
 export default abstract class Page extends Component<HTMLElement> {
+    public readonly urlMatch: RegExp | null = null;
     protected opened = false;
 
     protected constructor() {
@@ -29,5 +30,9 @@ export default abstract class Page extends Component<HTMLElement> {
 
     public static request(name: PageManager.PageNames) {
         document.dispatchEvent(new CustomEvent("requestPage", {detail: name}));
+    }
+
+    public static requestUrl(url: URL) {
+        document.dispatchEvent(new CustomEvent("requestUrl", {detail: url}));
     }
 }
