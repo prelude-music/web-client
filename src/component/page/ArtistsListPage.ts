@@ -10,7 +10,7 @@ import SvgComponent from "../SvgComponent.ts";
 class ArtistsListPage extends Page {
     public override urlMatch = /^\/artists\/?$/;
     private readonly grid = Component.tag("div")
-        .class("grid", "grid-cols-2", "sm:grid-cols-4", "lg:grid-cols-4", "xl:grid-cols-6", "gap-12", "mt-12")
+        .class("grid", "grid-cols-2", "sm:grid-cols-4", "lg:grid-cols-4", "xl:grid-cols-6", "gap-12", "mt-4")
     public constructor(protected readonly settings: PreludeSettings, private readonly sidebar: Sidebar) {
         super();
         this
@@ -20,7 +20,7 @@ class ArtistsListPage extends Page {
                     .tag("div")
                     .class("flex-1", "h-full", "pb-16", "px-4", "md:px-6")
                     .append(Component.tag("div")
-                        .class("py-2", "lg:py-6")
+                        .class("py-6", "lg:py-12")
                         .append(
                             Component.tag("h1")
                                 .text("Artists")
@@ -28,7 +28,7 @@ class ArtistsListPage extends Page {
                         )
                         .append(
                             Component.tag("p")
-                                .class("text-base", "text-zinc-400", "mt-2")
+                                .class("text-base", "text-zinc-400", "mt-4")
                         ))
                     .append(this.grid)
             );
@@ -46,7 +46,6 @@ class ArtistsListPage extends Page {
             .replaceClass("hidden", ["block", "lg:flex"])
             .prepend(this.sidebar);
         (async () => {
-            console.log(this.settings.server!.prelude)
             const page = await this.settings.server!.prelude.artist.list(48);
             this.element.querySelector("div > div > p")!.textContent = `There are ${page.total} artist${page.total === 1 ? "" : "s"} in your Prelude library.`;
             this.renderArtists(page.resources);
