@@ -28,7 +28,6 @@ class ArtistsListPage extends Page {
                         )
                         .append(
                             Component.tag("p")
-                                .text("There are 14 artists in your library.")
                                 .class("text-base", "text-zinc-400", "mt-2")
                         ))
                     .append(this.grid)
@@ -49,6 +48,7 @@ class ArtistsListPage extends Page {
         (async () => {
             console.log(this.settings.server!.prelude)
             const page = await this.settings.server!.prelude.artist.list(48);
+            this.element.querySelector("div > div > p")!.textContent = `There are ${page.total} artist${page.total === 1 ? "" : "s"} in your Prelude library.`;
             this.renderArtists(page.resources);
             for await (const nextPage of page.pages(48, 2))
                 this.renderArtists(nextPage.resources)
